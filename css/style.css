@@ -1,12 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
 }
 :root {
   font-size: 62.5%;
+  --fontBase: "Lato", sans-serif;
+  --loaderCircleColor: #ffd602;
   --white: white;
+  --primaryColor: #ffd602;
+  --secondaryColor: #d5040a;
+  --tertiaryColor: #036cb6;
+  --buttonColor: #123456;
+  --buttonColorSecondary: #987456;
+  --buttonColorDisabled: #987456;
 }
 body {
+  font-family: var(--fontBase);
   height: 100vh;
   overflow: hidden;
 }
@@ -31,7 +42,7 @@ body {
   animation: loader 2s linear forwards;
 }
 .circle-loader {
-  background-color: red;
+  background-color: var(--loaderCircleColor);
   width: 40px;
   height: 40px;
   border-radius: 50%;
