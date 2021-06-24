@@ -3,16 +3,16 @@
 :root {
   font-size: 62.5%;
   --fontBase: "Lato", sans-serif;
-  --loaderCircleColor: #ffd602;
-  --white: white;
-  --black: black;
-  --primaryColor: #ffd602;
-  --secondaryColor: #d5040a;
-  --tertiaryColor: #036cb6;
-  --buttonColor: #123456;
-  --buttonColorSecondary: #987456;
-  --buttonColorDisabled: #987456;
-  --fontColorPrimary: #d5040a;
+  --loaderCircleColor: #338e3c;
+  --white: #ffffff;
+  --black: #000000;
+  --primaryColor: #388e3c;
+  --secondaryColor: #212121;
+  --tertiaryColor: #c8e6c9;
+  --buttonColor: #448aff;
+  --buttonColorSecondary: #bdbdbd;
+  --buttonColorDisabled: #4caf50;
+  --fontColorPrimary: #388e3c;
 }
 body {
   font-family: var(--fontBase);
@@ -37,6 +37,9 @@ body {
     "footer    aside";
   height: 100%;
   width: 100%;
+}
+header {
+  margin-top: 20px;
 }
 
 .navbar {
@@ -175,7 +178,7 @@ body {
 .footer div img {
   width: 150px;
   position: absolute;
-  bottom: 30px;
+  bottom: 0px;
   transform: translateY(0) scale(1);
 
   transition: transform 0.5s ease-in-out;
@@ -250,12 +253,32 @@ body {
   }
 }
 
-.modal {
+.modal1,
+.modal2,
+.modal3 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   z-index: 4;
+}
+.modal1 p,
+.modal2 p,
+.modal3 p {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal1 .modalContainer p a,
+.modal2 .modalContainer p a,
+.modal3 .modalContainer p a {
+  color: var(--black);
+  font-weight: 700;
+  font-size: 2rem;
+  border-radius: 50%;
+  border: 1px var(--black) solid;
+  padding: 5px 10px;
+  margin: 10px;
+  cursor: pointer;
 }
 .hidden {
   display: none;
@@ -264,21 +287,105 @@ body {
   display: grid;
   place-items: center;
 }
-.modal__content {
-  width: 50%;
-  height: 50%;
+.modalContainer {
   background: var(--white);
+  width: 50%;
+  height: 60%;
 }
-.modal__content p {
+.modalContent {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 80%;
+  align-items: center;
 }
-.modal__content p a {
-  color: var(--black);
-  font-weight: 700;
-  font-size: 2rem;
-  border-radius: 50%;
-  border: 1px var(--black) solid;
-  padding: 5px 10px;
-  margin: 10px;
+.modalContentSlider {
+  width: 300px;
+  height: 200px;
+
+  transform-style: preserve-3d;
+}
+
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background: var(--primaryColor);
+  width: 60%;
+  height: 100%;
+  border-radius: 10px;
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+#radio1,
+#radio2,
+#radio3,
+#radio4,
+#radio5,
+#radio6,
+#radio7,
+#radio8,
+#radio9 {
+  display: none;
+}
+
+#radio1:checked ~ .cards .card1,
+#radio2:checked ~ .cards .card2,
+#radio3:checked ~ .cards .card3,
+#radio4:checked ~ .cards .card4,
+#radio5:checked ~ .cards .card5,
+#radio6:checked ~ .cards .card6,
+#radio7:checked ~ .cards .card7,
+#radio8:checked ~ .cards .card8,
+#radio9:checked ~ .cards .card9 {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+#radio1:checked ~ .cards .card2,
+#radio2:checked ~ .cards .card3,
+#radio3:checked ~ .cards .card1,
+#radio4:checked ~ .cards .card5,
+#radio5:checked ~ .cards .card6,
+#radio6:checked ~ .cards .card4,
+#radio7:checked ~ .cards .card8,
+#radio8:checked ~ .cards .card9,
+#radio9:checked ~ .cards .card7 {
+  transform: translateX(40%) scale(0.8);
+  opacity: 0.5;
+  z-index: 0;
+}
+#radio1:checked ~ .cards .card3,
+#radio2:checked ~ .cards .card1,
+#radio3:checked ~ .cards .card2,
+#radio4:checked ~ .cards .card6,
+#radio5:checked ~ .cards .card4,
+#radio6:checked ~ .cards .card5,
+#radio7:checked ~ .cards .card9,
+#radio8:checked ~ .cards .card7,
+#radio9:checked ~ .cards .card8 {
+  transform: translateX(-40%) scale(0.8);
+  opacity: 0.5;
+  z-index: 0;
+}
+.modalbutton input {
+  background: var(--secondaryColor);
+  color: var(--white);
+  font-size: 1.7rem;
+  border: 0;
+  outline: none;
+  padding: 15px 35px;
 }
